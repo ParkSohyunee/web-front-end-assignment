@@ -214,5 +214,239 @@
     "price": 13500,
     "stock": 5,
     "totalSales": 100
+  },
+  {
+    "id": 25,
+    "title": "Learning JavaScript",
+    "description": "An in-depth guide to JavaScript programming.",
+    "author": "John Doe",
+    "price": 25000,
+    "stock": 10,
+    "totalSales": 150
+  },
+  {
+    "id": 26,
+    "title": "Mastering React",
+    "description": "Comprehensive React development techniques.",
+    "author": "Jane Smith",
+    "price": 30000,
+    "stock": 8,
+    "totalSales": 200
+  },
+  {
+    "id": 27,
+    "title": "CSS Secrets",
+    "description": "Advanced CSS tips and tricks.",
+    "author": "Lea Verou",
+    "price": 22000,
+    "stock": 15,
+    "totalSales": 120
+  },
+  {
+    "id": 28,
+    "title": "Python Programming",
+    "description": "A beginner-friendly Python programming guide.",
+    "author": "Mark Lutz",
+    "price": 28000,
+    "stock": 12,
+    "totalSales": 180
+  },
+  {
+    "id": 29,
+    "title": "You Don’t Know JS",
+    "description": "Understanding the depths of JavaScript.",
+    "author": "Kyle Simpson",
+    "price": 27000,
+    "stock": 5,
+    "totalSales": 300
+  },
+  {
+    "id": 30,
+    "title": "Clean Code",
+    "description": "Writing cleaner and more maintainable code.",
+    "author": "Robert C. Martin",
+    "price": 35000,
+    "stock": 6,
+    "totalSales": 250
+  },
+  {
+    "id": 31,
+    "title": "Effective TypeScript",
+    "description": "Best practices for TypeScript programming.",
+    "author": "Dan Vanderkam",
+    "price": 32000,
+    "stock": 7,
+    "totalSales": 190
+  },
+  {
+    "id": 32,
+    "title": "Modern PHP",
+    "description": "Features and best practices in modern PHP.",
+    "author": "Josh Lockhart",
+    "price": 26000,
+    "stock": 9,
+    "totalSales": 170
+  },
+  {
+    "id": 33,
+    "title": "Eloquent JavaScript",
+    "description": "A modern introduction to JavaScript.",
+    "author": "Marijn Haverbeke",
+    "price": 24000,
+    "stock": 10,
+    "totalSales": 220
+  },
+  {
+    "id": 34,
+    "title": "The Pragmatic Programmer",
+    "description": "Journey to mastery in software development.",
+    "author": "Andrew Hunt and David Thomas",
+    "price": 34000,
+    "stock": 11,
+    "totalSales": 280
+  },
+  {
+    "id": 35,
+    "title": "Refactoring",
+    "description": "Improving the design of existing code.",
+    "author": "Martin Fowler",
+    "price": 31000,
+    "stock": 7,
+    "totalSales": 200
+  },
+  {
+    "id": 36,
+    "title": "Introduction to Algorithms",
+    "description": "Comprehensive guide to algorithms.",
+    "author": "Thomas H. Cormen",
+    "price": 40000,
+    "stock": 5,
+    "totalSales": 100
+  },
+  {
+    "id": 37,
+    "title": "Artificial Intelligence",
+    "description": "Modern approaches to AI.",
+    "author": "Stuart Russell and Peter Norvig",
+    "price": 45000,
+    "stock": 4,
+    "totalSales": 90
+  },
+  {
+    "id": 38,
+    "title": "Learning Python",
+    "description": "Python programming for beginners.",
+    "author": "Mark Lutz",
+    "price": 29000,
+    "stock": 10,
+    "totalSales": 210
+  },
+  {
+    "id": 39,
+    "title": "Database Systems",
+    "description": "Concepts, design, and implementation.",
+    "author": "Ramez Elmasri",
+    "price": 38000,
+    "stock": 6,
+    "totalSales": 150
+  },
+  {
+    "id": 40,
+    "title": "Cracking the Coding Interview",
+    "description": "189 programming questions and solutions.",
+    "author": "Gayle Laakmann McDowell",
+    "price": 33000,
+    "stock": 8,
+    "totalSales": 270
+  },
+  {
+    "id": 41,
+    "title": "Code Complete",
+    "description": "A practical handbook of software construction.",
+    "author": "Steve McConnell",
+    "price": 36000,
+    "stock": 7,
+    "totalSales": 230
+  },
+  {
+    "id": 42,
+    "title": "Design Patterns",
+    "description": "Elements of reusable object-oriented software.",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "price": 37000,
+    "stock": 5,
+    "totalSales": 180
+  },
+  {
+    "id": 43,
+    "title": "React Design Patterns and Best Practices",
+    "description": "Building maintainable React applications.",
+    "author": "Michele Bertoli",
+    "price": 31000,
+    "stock": 12,
+    "totalSales": 160
+  },
+  {
+    "id": 44,
+    "title": "Head First Design Patterns",
+    "description": "A brain-friendly guide.",
+    "author": "Eric Freeman, Bert Bates, Kathy Sierra, Elisabeth Robson",
+    "price": 35000,
+    "stock": 8,
+    "totalSales": 140
+  },
+  {
+    "id": 45,
+    "title": "The Clean Coder",
+    "description": "A code of conduct for professional programmers.",
+    "author": "Robert C. Martin",
+    "price": 32000,
+    "stock": 10,
+    "totalSales": 250
+  },
+  {
+    "id": 46,
+    "title": "Domain-Driven Design",
+    "description": "Tackling complexity in software.",
+    "author": "Eric Evans",
+    "price": 43000,
+    "stock": 4,
+    "totalSales": 90
+  },
+  {
+    "id": 47,
+    "title": "Deep Learning",
+    "description": "An MIT press book on deep learning.",
+    "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+    "price": 52000,
+    "stock": 3,
+    "totalSales": 80
+  },
+  {
+    "id": 48,
+    "title": "Building Microservices",
+    "description": "Designing fine-grained systems.",
+    "author": "Sam Newman",
+    "price": 34000,
+    "stock": 9,
+    "totalSales": 170
+  },
+  {
+    "id": 49,
+    "title": "The Art of Computer Programming",
+    "description": "Comprehensive computer science book.",
+    "author": "Donald E. Knuth",
+    "price": 58000,
+    "stock": 2,
+    "totalSales": 50
+  },
+  {
+    "id": 50,
+    "title": "Introduction to the Theory of Computation",
+    "description": "Theory and examples.",
+    "author": "Michael Sipser",
+    "price": 44000,
+    "stock": 6,
+    "totalSales": 110
   }
 ]
