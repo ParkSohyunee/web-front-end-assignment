@@ -59,6 +59,9 @@ export default function BooksTable() {
       <h1>📚 Books</h1>
       <div className={styles.searchBar}>
         <input onKeyUp={onKeyHandler} placeholder="제목 또는 저자명을 입력후 엔터를 눌러주세요." />
+        <Link href="/books/create" className={styles.addButton}>
+          + 책 추가하기
+        </Link>
       </div>
 
       <div className={styles.wrapper}>

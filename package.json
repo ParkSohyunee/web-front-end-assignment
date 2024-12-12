@@ -6,14 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start-json-server": "json-server --watch ./data/books.json --port 3001"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.7",
     "@tanstack/react-query-devtools": "^5.62.7",
     "next": "14.2.20",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.54.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -22,6 +24,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.20",
     "eslint-config-prettier": "^9.1.0",
+    "json-server": "^0.17.4",
     "typescript": "^5"
   }
 }
