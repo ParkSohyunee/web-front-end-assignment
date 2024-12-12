@@ -43,10 +43,15 @@ export async function GET(request: NextRequest) {
 
 /** 책 추가 API */
 export async function POST(request: NextRequest) {
-  const data = await request.json();
+  const req = await request.json();
 
   try {
-    return new Response(JSON.stringify({ data }));
+    const filePath = path.join(process.cwd(), 'data', 'books.json');
+    const data = await promises.readFile(filePath, 'utf-8');
+    const books: BookType[] = JSON.parse(data);
+    const newData = Object.assign(req, { id: books.length + 1, totalSales: 0 });
+
+    return new Response(JSON.stringify(newData));
   } catch (error) {
     console.log(error);
     return new Response(JSON.stringify({ message: '데이터 생성 실패' }), { status: 500 });

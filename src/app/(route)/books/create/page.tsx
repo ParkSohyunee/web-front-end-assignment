@@ -22,8 +22,8 @@ export default function CreateBookPage() {
         body: JSON.stringify(data),
       });
       const result: BookType = await response.json();
+      alert(`✅ 책 추가 성공! ID: ${result.id} / 제목: ${result.title} / 저자: ${result.author}`);
       router.push('/books');
-      console.log(result);
     } catch (error) {
       console.error('error:', error);
     }
