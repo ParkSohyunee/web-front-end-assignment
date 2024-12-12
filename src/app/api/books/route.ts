@@ -19,10 +19,12 @@ export async function GET(request: NextRequest) {
     const data = await promises.readFile(filePath, 'utf-8'); // string
     const books: BookType[] = JSON.parse(data); // object
 
-    return Response.json({
-      data: books.slice(startIndex, endIndex),
-      totalCount: books.length,
-    });
+    return new Response(
+      JSON.stringify({
+        data: books.slice(startIndex, endIndex),
+        totalCount: books.length,
+      }),
+    );
   } catch (error) {
     return new Response(JSON.stringify({ message: '데이터 조회 실패' }), { status: 500 });
   }
