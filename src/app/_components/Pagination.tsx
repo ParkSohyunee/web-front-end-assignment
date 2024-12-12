@@ -5,11 +5,18 @@ import styles from './Pagination.module.css';
 interface PaginationProps {
   totalCount: number;
   page: string | null;
+  keyword?: string;
   dataSize: number; // 한 페이지당 불러올 데이터
   pageSize: number; // 화면에 보여질 페이지 개수
 }
 
-export default function Pagination({ totalCount, page, dataSize, pageSize }: PaginationProps) {
+export default function Pagination({
+  totalCount,
+  page,
+  dataSize,
+  pageSize,
+  keyword,
+}: PaginationProps) {
   const totalPages = Math.ceil(totalCount / dataSize); // 총 페이지 개수
   const currentPage = page && parseInt(page) > 0 ? parseInt(page) : 1; // 현재 페이지
   const pageGroup = Math.ceil(currentPage / pageSize); // 화면에 보여질 페이지 그룹
@@ -21,7 +28,9 @@ export default function Pagination({ totalCount, page, dataSize, pageSize }: Pag
   return (
     <div className={styles.container}>
       {pageGroup !== 1 && (
-        <Link href={`?page=${firstPageNumber - 1}&limit=${dataSize}`}>{`<`} 이전</Link>
+        <Link href={`?page=${firstPageNumber - 1}&limit=${dataSize}&search=${keyword}`}>
+          {`<`} 이전
+        </Link>
       )}
 
       {Array.from(
@@ -30,7 +39,7 @@ export default function Pagination({ totalCount, page, dataSize, pageSize }: Pag
       ).map((value, index) => (
         <Link
           key={index}
-          href={`?page=${firstPageNumber + index}&limit=${dataSize}`}
+          href={`?page=${firstPageNumber + index}&limit=${dataSize}&search=${keyword}`}
           className={`${styles.page} ${currentPage === value && styles.active}`}
         >
           {value}
@@ -38,7 +47,9 @@ export default function Pagination({ totalCount, page, dataSize, pageSize }: Pag
       ))}
 
       {pageGroup * pageSize < totalPages && (
-        <Link href={`?page=${lastPageNumber + 1}&limit=${dataSize}`}>다음 {`>`}</Link>
+        <Link href={`?page=${lastPageNumber + 1}&limit=${dataSize}&search=${keyword}`}>
+          다음 {`>`}
+        </Link>
       )}
     </div>
   );
