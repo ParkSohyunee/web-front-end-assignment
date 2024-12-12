@@ -29,7 +29,7 @@ export default function BooksTable() {
         setKeyword(formatKeyword);
         router.push(`?page=1&limit=10&search=${keyword}`); // 검색어 입력 시 처음 페이지로 이동
       } else {
-        router.push(`/`);
+        router.push(`/books`);
         setKeyword('');
       }
     }
