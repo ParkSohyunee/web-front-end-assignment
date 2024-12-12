@@ -1,6 +1,4 @@
 import { NextRequest } from 'next/server';
-import { promises } from 'fs';
-import path from 'path';
 
 import { BookType } from '@/app/_lib/types/book';
 
@@ -17,9 +15,13 @@ export async function GET(request: NextRequest) {
   const endIndex = startIndex + size;
 
   try {
-    const filePath = path.join(process.cwd(), 'data', 'books.json');
-    const data = await promises.readFile(filePath, 'utf-8'); // string
-    const books: BookType[] = JSON.parse(data); // object
+    /** JSON Server를 활용하여 데이터 조회하는 방식으로 수정, 기존 목업 데이터 조회 로직 주석처리 */
+    // const filePath = path.join(process.cwd(), 'data', 'books.json');
+    // const data = await promises.readFile(filePath, 'utf-8'); // string
+    // const books: BookType[] = JSON.parse(data); // object
+
+    const response = await fetch('http://localhost:3001/books');
+    const books: BookType[] = await response.json();
     const filteredBooks = books.filter(
       (book) =>
         book.title.toLocaleLowerCase().split(' ').join('') === search ||
@@ -46,12 +48,17 @@ export async function POST(request: NextRequest) {
   const req = await request.json();
 
   try {
-    const filePath = path.join(process.cwd(), 'data', 'books.json');
-    const data = await promises.readFile(filePath, 'utf-8');
-    const books: BookType[] = JSON.parse(data);
-    const newData = Object.assign(req, { id: books.length + 1, totalSales: 0 });
+    const newData = Object.assign(req, { totalSales: 0 });
+    const response = await fetch('http://localhost:3001/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newData),
+    });
+    const data = await response.json();
 
-    return new Response(JSON.stringify(newData));
+    return new Response(JSON.stringify(data));
   } catch (error) {
     console.log(error);
     return new Response(JSON.stringify({ message: '데이터 생성 실패' }), { status: 500 });
