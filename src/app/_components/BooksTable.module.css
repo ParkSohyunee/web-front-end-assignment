@@ -26,6 +26,23 @@
   flex-grow: 1;
 }
 
+.addButton {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  border-radius: 0.5rem;
+  background: #3d95ff;
+  cursor: pointer;
+}
+
 .table {
   width: 100%;
   table-layout: fixed;
