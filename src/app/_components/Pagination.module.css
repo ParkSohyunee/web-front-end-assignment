@@ -1,9 +1,8 @@
 .container {
-  max-width: 850px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
   color: darkslategray;
 }
