@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import styles from './Pagination.module.css';
+
 interface PaginationProps {
   totalCount: number;
   page: string | null;
@@ -17,20 +19,26 @@ export default function Pagination({ totalCount, page, dataSize, pageSize }: Pag
   const lastPageNumber = pageGroup * pageSize > totalPages ? totalPages : pageGroup * pageSize;
 
   return (
-    <div>
-      {pageGroup !== 1 && <Link href={`?page=${firstPageNumber - 1}&limit=${dataSize}`}>이전</Link>}
+    <div className={styles.container}>
+      {pageGroup !== 1 && (
+        <Link href={`?page=${firstPageNumber - 1}&limit=${dataSize}`}>{`<`} 이전</Link>
+      )}
 
       {Array.from(
         { length: lastPageNumber - firstPageNumber + 1 },
         (_, i) => firstPageNumber + i,
       ).map((value, index) => (
-        <Link key={index} href={`?page=${firstPageNumber + index}&limit=${dataSize}`}>
+        <Link
+          key={index}
+          href={`?page=${firstPageNumber + index}&limit=${dataSize}`}
+          className={`${styles.page} ${currentPage === value && styles.active}`}
+        >
           {value}
         </Link>
       ))}
 
       {pageGroup * pageSize < totalPages && (
-        <Link href={`?page=${lastPageNumber + 1}&limit=${dataSize}`}>다음</Link>
+        <Link href={`?page=${lastPageNumber + 1}&limit=${dataSize}`}>다음 {`>`}</Link>
       )}
     </div>
   );

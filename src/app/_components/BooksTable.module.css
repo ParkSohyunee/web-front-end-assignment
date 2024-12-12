@@ -1,0 +1,27 @@
+.container {
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.table {
+  max-width: 850px;
+  table-layout: fixed;
+  flex-grow: 1;
+  text-align: center;
+  border: 2px solid;
+  border-collapse: collapse;
+}
+
+.head {
+  background-color: #c5dfff;
+}
+
+.item {
+  width: 300px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
