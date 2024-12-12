@@ -4,6 +4,7 @@ import path from 'path';
 
 import { BookType } from '@/app/_lib/types/book';
 
+/** 책 목록 조회 API */
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams.get('page');
   const limit = request.nextUrl.searchParams.get('limit');
@@ -35,6 +36,19 @@ export async function GET(request: NextRequest) {
       }),
     );
   } catch (error) {
+    console.log(error);
     return new Response(JSON.stringify({ message: '데이터 조회 실패' }), { status: 500 });
+  }
+}
+
+/** 책 추가 API */
+export async function POST(request: NextRequest) {
+  const data = await request.json();
+
+  try {
+    return new Response(JSON.stringify({ data }));
+  } catch (error) {
+    console.log(error);
+    return new Response(JSON.stringify({ message: '데이터 생성 실패' }), { status: 500 });
   }
 }
