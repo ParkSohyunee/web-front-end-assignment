@@ -28,7 +28,9 @@ export default function Pagination({
   return (
     <div className={styles.container}>
       {pageGroup !== 1 && (
-        <Link href={`?page=${firstPageNumber - 1}&limit=${dataSize}&search=${keyword}`}>
+        <Link
+          href={`?page=${firstPageNumber - 1}&limit=${dataSize}${keyword && `&search=${keyword}`}`}
+        >
           {`<`} 이전
         </Link>
       )}
@@ -39,7 +41,9 @@ export default function Pagination({
       ).map((value, index) => (
         <Link
           key={index}
-          href={`?page=${firstPageNumber + index}&limit=${dataSize}&search=${keyword}`}
+          href={`?page=${firstPageNumber + index}&limit=${dataSize}${
+            keyword && `&search=${keyword}`
+          }`}
           className={`${styles.page} ${currentPage === value && styles.active}`}
         >
           {value}
@@ -47,7 +51,9 @@ export default function Pagination({
       ))}
 
       {pageGroup * pageSize < totalPages && (
-        <Link href={`?page=${lastPageNumber + 1}&limit=${dataSize}&search=${keyword}`}>
+        <Link
+          href={`?page=${lastPageNumber + 1}&limit=${dataSize}${keyword && `&search=${keyword}`}`}
+        >
           다음 {`>`}
         </Link>
       )}
