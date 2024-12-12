@@ -1,10 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { BookType } from '@/app/_lib/types/book';
+import { DATA_SIZE_PER_PAGE, PAGE_SIZE } from '@/app/_lib/constants/pagination';
+
+import Pagination from './Pagination';
 
 export default function BooksTable() {
   const searchParams = useSearchParams();
@@ -29,18 +31,6 @@ export default function BooksTable() {
     fetchData();
   }, [page]);
 
-  // --페이지네이션
-  const dataSize = 10; // 한 페이지당 불러올 데이터
-  const pageSize = 3; // 화면에 보여질 페이지 개수
-  const totalPages = Math.ceil(totalCount / dataSize); // 총 페이지 개수
-
-  const currentPage = page && parseInt(page) > 0 ? parseInt(page) : 1; // 현재 페이지
-  const pageGroup = Math.ceil(currentPage / pageSize); // 화면에 보여질 페이지 그룹
-
-  // 화면에 보여질 데이터의 첫번째 페이지 번호와 마지막 페이지 번호 계산
-  const firstPageNumber = (pageGroup - 1) * pageSize + 1;
-  const lastPageNumber = pageGroup * pageSize > totalPages ? totalPages : pageGroup * pageSize;
-
   return (
     <section>
       <h1>책 목록</h1>
@@ -51,19 +41,12 @@ export default function BooksTable() {
           </li>
         ))}
       </ul>
-
-      {pageGroup !== 1 && <Link href={`?page=${firstPageNumber - 1}&limit=${dataSize}`}>이전</Link>}
-      {Array.from(
-        { length: lastPageNumber - firstPageNumber + 1 },
-        (_, i) => firstPageNumber + i,
-      ).map((value, index) => (
-        <Link key={index} href={`?page=${firstPageNumber + index}&limit=${dataSize}`}>
-          {value}
-        </Link>
-      ))}
-      {pageGroup * pageSize < totalPages && (
-        <Link href={`?page=${lastPageNumber + 1}&limit=${dataSize}`}>다음</Link>
-      )}
+      <Pagination
+        totalCount={totalCount}
+        page={page}
+        dataSize={DATA_SIZE_PER_PAGE}
+        pageSize={PAGE_SIZE}
+      />
     </section>
   );
 }
