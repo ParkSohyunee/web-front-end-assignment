@@ -1,0 +1,4 @@
+const DATA_SIZE_PER_PAGE = 10;
+const PAGE_SIZE = 3;
+
+export { DATA_SIZE_PER_PAGE, PAGE_SIZE };
