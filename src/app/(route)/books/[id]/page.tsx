@@ -1,4 +1,7 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
+
+import styles from './page.module.css';
 
 import { BookType } from '@/app/_lib/types/book';
 import { DOMAIN_URL } from '@/app/_lib/constants/domain';
@@ -24,7 +27,8 @@ export default async function BookDetailPage({ params }: BookDetailPageParamsTyp
   const book = await getBookDetail(bookId);
 
   return (
-    <main>
+    <main className={styles.page}>
+      <Link href="/books">{`<`} 목록보기</Link>
       <BookCard book={book} />
     </main>
   );
