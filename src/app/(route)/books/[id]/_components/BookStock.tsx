@@ -8,6 +8,8 @@ import { stockInputRules } from '@/app/_lib/constants/formValidationRules';
 import { BookType } from '@/app/_lib/types/book';
 import { DOMAIN_URL } from '@/app/_lib/constants/domain';
 
+import CustomButton from '@/app/_components/CustomButton';
+
 interface BookStockProps {
   bookId: number;
 }
@@ -72,12 +74,18 @@ export default function BookStock({ bookId }: BookStockProps) {
           <input type="number" {...register('stock', stockInputRules)} disabled={!isEdit} />
           <p>{errors.stock && errors.stock.message}</p>
         </div>
-        <button type="button" onClick={isEdit ? handleEditOff : handleEditOn}>
-          {isEdit ? '취소' : '수정'}
-        </button>
-        <button type="button" onClick={handleSubmit(onSubmit)} disabled={!isValid}>
-          저장
-        </button>
+        <div>
+          <CustomButton type="button" onClick={isEdit ? handleEditOff : handleEditOn}>
+            {isEdit ? '취소' : '수정'}
+          </CustomButton>
+          <CustomButton
+            type="button"
+            onClick={handleSubmit(onSubmit)}
+            isError={!isValid || !isEdit}
+          >
+            저장
+          </CustomButton>
+        </div>
       </div>
     </form>
   );
