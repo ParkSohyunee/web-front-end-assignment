@@ -52,7 +52,7 @@ export default function BooksTable() {
     };
 
     fetchData();
-  }, [page, keyword]);
+  }, [page, keyword, searchParams]);
 
   return (
     <section className={styles.container}>
@@ -79,7 +79,7 @@ export default function BooksTable() {
               <tr key={id}>
                 <td>{id}</td>
                 <td className={styles.item}>
-                  <Link href={'/'}>{title}</Link>
+                  <Link href={`/books/${id}`}>{title}</Link>
                 </td>
                 <td className={styles.item}>{author}</td>
                 <td>{totalSales}</td>
