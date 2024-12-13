@@ -1,5 +1,6 @@
 'use client';
 
+import { notFound } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -9,10 +10,19 @@ import { DOMAIN_URL } from '@/app/_lib/constants/domain';
 
 interface BookStockProps {
   bookId: number;
-  stock: number;
 }
 
-export default function BookStock({ bookId, stock }: BookStockProps) {
+async function getBookDetail(id: string) {
+  const response = await fetch(`${DOMAIN_URL}/api/books/${id}`, { cache: 'no-cache' });
+  const book: BookType = await response.json();
+
+  if (response.status !== 200) {
+    notFound();
+  }
+  return book;
+}
+
+export default function BookStock({ bookId }: BookStockProps) {
   const [isEdit, setIsEdit] = useState(false);
   const {
     register,
@@ -22,8 +32,7 @@ export default function BookStock({ bookId, stock }: BookStockProps) {
   } = useForm<Pick<BookType, 'stock'>>({
     mode: 'onChange',
     defaultValues: async () => {
-      const response = await fetch(`${DOMAIN_URL}/api/books/${bookId}`, { cache: 'no-cache' });
-      const book: BookType = await response.json();
+      const book: BookType = await getBookDetail(String(bookId));
       return { stock: book.stock };
     },
   });
@@ -43,9 +52,13 @@ export default function BookStock({ bookId, stock }: BookStockProps) {
         method: 'PUT',
         body: JSON.stringify(data),
       });
-      const result: BookType = await response.json();
-      reset({ stock: result.stock });
-      handleEditOff();
+
+      // 수량 수정 후 책 상세 조회 fetch
+      if (response.ok) {
+        const updateBook = await getBookDetail(String(bookId));
+        reset({ stock: updateBook.stock });
+        handleEditOff();
+      }
     } catch (error) {
       console.error('error:', error);
     }

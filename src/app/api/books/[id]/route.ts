@@ -61,9 +61,10 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
         },
         body: JSON.stringify(book),
       });
-      const data = await response.json();
 
-      return new Response(JSON.stringify(data));
+      if (response.ok) {
+        return new Response(null);
+      }
     } else {
       return new Response(JSON.stringify({ message: '일치하는 데이터 없음' }), { status: 404 });
     }

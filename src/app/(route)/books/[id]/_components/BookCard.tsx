@@ -21,7 +21,7 @@ export default function BookCard({ book }: BookCardProps) {
       <article className={styles.detail}>
         <p>{description}</p>
         <p>{price}원</p>
-        <BookStock stock={stock} bookId={id} />
+        <BookStock bookId={id} />
       </article>
       <div>
         <DeleteButton bookId={id} />
