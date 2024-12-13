@@ -52,7 +52,7 @@ export default function BooksTable() {
     };
 
     fetchData();
-  }, [page, keyword]);
+  }, [page, keyword, searchParams]);
 
   return (
     <section className={styles.container}>

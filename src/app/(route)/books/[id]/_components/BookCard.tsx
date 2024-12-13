@@ -10,7 +10,7 @@ interface BookCardProps {
 }
 
 export default function BookCard({ book }: BookCardProps) {
-  const { title, description, author, price, stock, id } = book;
+  const { title, description, author, price, id } = book;
 
   return (
     <section className={styles.container}>

@@ -48,7 +48,7 @@ export default function BookStock({ bookId }: BookStockProps) {
   const handleEditOff = useCallback(() => {
     reset();
     setIsEdit(false);
-  }, []);
+  }, [reset]);
 
   const onSubmit = async (data: Pick<BookType, 'stock'>) => {
     try {
