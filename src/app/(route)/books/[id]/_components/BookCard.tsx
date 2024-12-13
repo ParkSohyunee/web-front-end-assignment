@@ -1,6 +1,8 @@
 import { BookType } from '@/app/_lib/types/book';
 
 import styles from './BookCard.module.css';
+
+import BookStock from './BookStock';
 import DeleteButton from './DeleteButton';
 
 interface BookCardProps {
@@ -19,7 +21,7 @@ export default function BookCard({ book }: BookCardProps) {
       <article className={styles.detail}>
         <p>{description}</p>
         <p>{price}원</p>
-        <div>수량 {stock}</div>
+        <BookStock stock={stock} bookId={id} />
       </article>
       <div>
         <DeleteButton bookId={id} />

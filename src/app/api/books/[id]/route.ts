@@ -42,3 +42,33 @@ export async function DELETE(
     return new Response(JSON.stringify({ message: '데이터 삭제 실패' }), { status: 500 });
   }
 }
+
+/** 책 수정 API */
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: number }> }) {
+  const { id: bookId } = await params;
+  const req = await request.json();
+
+  try {
+    const response = await fetch(`http://localhost:3001/books/${bookId}`);
+    const book: BookType = await response.json();
+
+    if (response.ok) {
+      book.stock = Number(req.stock);
+      const response = await fetch(`http://localhost:3001/books/${bookId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(book),
+      });
+      const data = await response.json();
+
+      return new Response(JSON.stringify(data));
+    } else {
+      return new Response(JSON.stringify({ message: '일치하는 데이터 없음' }), { status: 404 });
+    }
+  } catch (error) {
+    console.log(error);
+    return new Response(JSON.stringify({ message: '데이터 수정 실패' }), { status: 500 });
+  }
+}
