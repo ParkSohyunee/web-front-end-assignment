@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { BookType } from '@/app/_lib/types/book';
 import { DOMAIN_URL } from '@/app/_lib/constants/domain';
 
+import BookCard from './_components/BookCard';
+
 interface BookDetailPageParamsType {
   params: Promise<{ id: string }>;
 }
@@ -21,5 +23,9 @@ export default async function BookDetailPage({ params }: BookDetailPageParamsTyp
   const { id: bookId } = await params;
   const book = await getBookDetail(bookId);
 
-  return <main>{book.title}</main>;
+  return (
+    <main>
+      <BookCard book={book} />
+    </main>
+  );
 }
