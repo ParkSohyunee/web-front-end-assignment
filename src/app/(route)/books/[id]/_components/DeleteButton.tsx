@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import CustomButton from '@/app/_components/CustomButton';
 
 interface DeleteButtonProps {
   bookId: number;
@@ -26,5 +27,5 @@ export default function DeleteButton({ bookId }: DeleteButtonProps) {
     }
   };
 
-  return <button onClick={handleDeleteBook}>삭제하기</button>;
+  return <CustomButton onClick={handleDeleteBook}>삭제하기</CustomButton>;
 }

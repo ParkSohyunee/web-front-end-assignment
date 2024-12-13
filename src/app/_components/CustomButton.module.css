@@ -1,13 +1,14 @@
 .button {
   padding: 0.5rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
   font-size: 0.9rem;
   font-weight: 500;
   color: white;
 
+  border: none;
   border-radius: 0.5rem;
   background: #3d95ff;
   outline-style: none;

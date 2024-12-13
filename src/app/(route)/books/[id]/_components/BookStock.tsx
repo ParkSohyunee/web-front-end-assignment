@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import styles from './BookStock.module.css';
+
 import { stockInputRules } from '@/app/_lib/constants/formValidationRules';
 import { BookType } from '@/app/_lib/types/book';
 import { DOMAIN_URL } from '@/app/_lib/constants/domain';
@@ -67,14 +69,19 @@ export default function BookStock({ bookId }: BookStockProps) {
   };
 
   return (
-    <form>
+    <form className={styles.container}>
       <label>수량</label>
-      <div>
+      <div className={styles.container}>
         <div>
-          <input type="number" {...register('stock', stockInputRules)} disabled={!isEdit} />
-          <p>{errors.stock && errors.stock.message}</p>
+          <input
+            type="number"
+            {...register('stock', stockInputRules)}
+            disabled={!isEdit}
+            className={styles.input}
+          />
+          <p className={styles.error}>{errors.stock && errors.stock.message}</p>
         </div>
-        <div>
+        <div className={styles.buttons}>
           <CustomButton type="button" onClick={isEdit ? handleEditOff : handleEditOn}>
             {isEdit ? '취소' : '수정'}
           </CustomButton>
